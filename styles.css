@@ -99,53 +99,65 @@ body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-
 
 .robot { width: 220px; height: 340px; display: grid; grid-template-rows: 90px 120px 130px; place-items: center; transform-style: preserve-3d; transition: transform 600ms cubic-bezier(.2,.9,.2,1); will-change: transform; }
 
-/* Head - more human proportions, glass visor, subtle glow */ .robot-head { width: 120px; height: 80px; background: var(--metal-1); border-radius: 18px; box-shadow: 0 6px 20px rgba(0,0,0,0.6), 0 0 18px rgba(0,255,213,0.06); position: relative; display:flex; align-items:center; justify-content:center; transform-origin: center 60%; transition: transform 120ms linear; border: 1px solid rgba(255,255,255,0.06); }
-
-.visor { width: 92%; height: 44%; background: linear-gradient(90deg, rgba(4,255,200,0.12), rgba(106,0,255,0.08)); border-radius: 8px; box-shadow: inset 0 -6px 18px rgba(0,0,0,0.35), 0 0 12px rgba(0,255,213,0.12); display:flex; align-items:center; justify-content:space-between; padding: 6px 12px; color: var(--accent); font-weight:700; font-family:monospace; }
+/* Head */ .robot-head { width: 120px; height: 80px; background: var(--metal-1); border-radius: 18px; box-shadow: 0 6px 20px rgba(0,0,0,0.6), 0 0 18px rgba(0,255,213,0.06); position: relative; display:flex; align-items:center; justify-content:center; transform-origin: center 60%; transition: transform 120ms linear; border: 1px solid rgba(255,255,255,0.06); }
 
 .eye { width: 18px; height: 18px; background: radial-gradient(circle at 35% 30%, #fff, var(--accent)); border-radius: 50%; box-shadow: 0 0 12px var(--accent); }
 
+.eye-left { position: absolute; left: 25px; }
+
+.eye-right { position: absolute; right: 25px; }
+
 .antenna { position:absolute; left: 50%; transform: translateX(-50%); bottom: -10px; width: 8px; height: 18px; background:linear-gradient(180deg,#fff, #d1d1ff); border-radius: 4px; box-shadow: 0 4px 10px rgba(0,0,0,0.25); }
 
-/* Neck */ .neck { width: 36px; height: 18px; background: linear-gradient(180deg,#e6eef2,#bfcbd2); border-radius: 6px; margin-top: -6px; }
+/* Body */ .robot-body { width: 150px; height: 110px; background: linear-gradient(180deg,#e9eef7,#c3ccd6); border-radius: 14px; position: relative; display:flex; align-items:center; justify-content:center; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
 
-/* Torso - sharper, chest light + holo display */ .robot-body { width: 150px; height: 110px; background: linear-gradient(180deg,#e9eef7,#c3ccd6); border-radius: 14px; position: relative; display:flex; align-items:center; justify-content:center; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+.chest-light { width: 30px; height: 30px; background: radial-gradient(circle, var(--accent), transparent); border-radius: 50%; box-shadow: 0 0 20px var(--accent); animation: pulse 2s ease-in-out infinite; }
 
-.chest-panel { width: 68%; height: 58%; background: linear-gradient(90deg, rgba(0,255,213,0.06), rgba(106,0,255,0.04)); border-radius: 8px; border: 1px solid rgba(255,255,255,0.06); display:flex; align-items:center; justify-content:center; color:var(--accent); font-family: 'Segoe UI', Roboto, system-ui, sans-serif; font-weight:600; letter-spacing:0.04em; box-shadow: inset 0 -6px 14px rgba(0,0,0,0.25); }
+@keyframes pulse { 0%, 100% { opacity: 0.6; } 50% { opacity: 1; } }
 
-/* Shoulders and arms (humanoid joints) */ .shoulder-row { width: 100%; display:flex; justify-content:space-between; position:absolute; top:18px; padding: 0 12px; }
+/* Arms */ .robot-arm { position: absolute; width: 40px; height: 100px; top: 20px; }
 
-.arm { width: 46px; height: 170px; position:relative; transform-origin: top center; display:flex; flex-direction:column; align-items:center; }
+.arm-left { left: -35px; }
 
-.upper-arm, .lower-arm { width: 42px; background: linear-gradient(180deg,#bfc9d2,#9aa7b3); border-radius: 10px; display:block; }
+.arm-right { right: -35px; }
 
-.upper-arm { height: 56px; transform-origin: top center; margin-top:6px;} .elbow { width: 34px; height: 18px; background:var(--glass); border-radius: 10px; margin-top:6px; } .lower-arm { height: 56px; margin-top:6px; transform-origin: top center; display:flex; align-items:center; justify-content:center; } .wrist { width: 28px; height: 12px; background:rgba(0,0,0,0.05); border-radius:6px; margin-top:6px; }
+.upper-arm, .lower-arm { width: 40px; height: 45px; background: linear-gradient(180deg,#bfc9d2,#9aa7b3); border-radius: 10px; margin-bottom: 5px; }
 
-/* Boxing gloves - cute, rounded, neon accent */ .glove { width: 56px; height: 56px; background: radial-gradient(circle at 35% 20%, #fff, #ff4d7a 30%, #ff2a5e 100%); border-radius: 50%; box-shadow: 0 6px 18px rgba(255,77,122,0.18), 0 0 26px rgba(255,42,94,0.12); display:flex; align-items:center; justify-content:center; color:white; font-weight:700; transform-origin: 20% 50%; }
+.hand { width: 35px; height: 35px; background: radial-gradient(circle at 35% 20%, #fff, #ff4d7a 30%, #ff2a5e 100%); border-radius: 50%; box-shadow: 0 6px 18px rgba(255,77,122,0.18); }
 
-/* legs - human proportions, knees and thruster feet */ .leg-row { width: 100%; display:flex; justify-content:space-between; position:absolute; bottom: -10px; padding: 0 28px; }
+/* Legs */ .robot-leg { position: absolute; width: 50px; height: 120px; bottom: -130px; }
 
-.leg { width: 56px; height: 140px; display:flex; flex-direction:column; align-items:center; }
+.leg-left { left: 30px; }
 
-.thigh { width: 54px; height: 56px; background:linear-gradient(180deg,#c6d0d9,#98a6b2); border-radius:10px; } .knee { width: 40px; height: 20px; background:var(--glass); border-radius:10px; margin-top:6px; } .shin { width: 52px; height: 46px; background:linear-gradient(180deg,#dfe8ef,#b1bdc8); border-radius:10px; margin-top:6px; }
+.leg-right { right: 30px; }
 
-.foot { width: 70px; height: 36px; background: linear-gradient(180deg,#1b1f29,#0a0b0d); border-radius: 10px; margin-top:8px; position: relative; overflow:visible; }
-
-/* Thrusters / jets under feet when flying */ .thruster { position:absolute; left:50%; transform:translateX(-50%); bottom:-12px; width:42px; height:28px; background:linear-gradient(180deg,#222,#111); border-radius: 8px; box-shadow: 0 12px 30px rgba(0,0,0,0.6); overflow:visible; display:flex; align-items:center; justify-content:center; }
-
-.flame { width:12px; height:12px; background: radial-gradient(circle at 50% 10%, #fff, #ffb84d 30%, #ff4324 70%); border-radius:50%; box-shadow: 0 8px 20px rgba(255,68,36,0.24); opacity:0; transform: translateY(6px) scale(.6); transition:opacity 160ms ease, transform 160ms ease; }
-
-/* state classes for animation */ .robot--floating { animation: subtleFloat 4.5s ease-in-out infinite; } @keyframes subtleFloat { 0%{ transform: translateY(0) rotateX(0) } 50%{ transform: translateY(-14px) rotateX(1.2deg)} 100%{ transform: translateY(0) rotateX(0)} }
-
-.robot--punch .arm-left .glove { animation: punchLeft 900ms ease-in-out infinite; transform-origin: left center;} .robot--punch .arm-right .glove { animation: punchRight 900ms ease-in-out infinite; transform-origin: right center;} @keyframes punchLeft { 0%{ transform: rotate(-6deg) translateX(-4px); } 40%{ transform: rotate(-28deg) translateX(-14px) translateY(-6px) scale(1.02); } 100%{ transform: rotate(-6deg) translateX(-4px); } } @keyframes punchRight { 0%{ transform: rotate(6deg) translateX(4px); } 40%{ transform: rotate(28deg) translateX(14px) translateY(-6px) scale(1.02); } 100%{ transform: rotate(6deg) translateX(4px); } }
-
-.robot--flying { transform: translateY(-60px) scale(1.04); box-shadow: 0 40px 80px rgba(0,0,0,0.45); } .robot--flying .flame { opacity:1; transform: translateY(0) scale(1); animation: flamePulse 300ms ease-in-out infinite alternate; } @keyframes flamePulse { from{ transform: translateY(0) scale(1); opacity:1 } to{ transform: translateY(6px) scale(0.86); opacity:0.85 } }
-
-/* subtle head turn effect when tracking mouse */ .robot-head[data-head-tilt="left"]{ transform: rotateY(6deg) rotateZ(-2deg) translateX(-6px); } .robot-head[data-head-tilt="right"]{ transform: rotateY(-6deg) rotateZ(2deg) translateX(6px); }
+.upper-leg, .lower-leg { width: 50px; height: 55px; background: linear-gradient(180deg,#c6d0d9,#98a6b2); border-radius: 10px; margin-bottom: 5px; }
 
 /* Transform Button */ .transform-btn { position: absolute; bottom: 20%; right: 10%; padding: 15px 30px; background: linear-gradient(135deg, #ff00ff, #00ffff); color: #000; border: none; border-radius: 50px; font-size: 1.1rem; font-weight: 700; cursor: pointer; z-index: 100; box-shadow: 0 0 20px rgba(255, 0, 255, 0.6); transition: all 0.3s ease; }
 
 .transform-btn:hover { transform: scale(1.1); box-shadow: 0 0 30px rgba(0, 255, 255, 0.8); }
+
+/* Race Car */ .race-car { width: 200px; height: 100px; position: relative; }
+
+.car-body { width: 180px; height: 60px; background: linear-gradient(135deg, #ff00ff, #00ffff); border-radius: 20px; position: relative; box-shadow: 0 10px 30px rgba(255, 0, 255, 0.4); }
+
+.car-window { width: 80px; height: 30px; background: rgba(0, 255, 255, 0.3); border-radius: 10px; position: absolute; top: 10px; left: 50px; }
+
+.car-light { width: 15px; height: 15px; background: #ffff00; border-radius: 50%; position: absolute; top: 25px; box-shadow: 0 0 10px #ffff00; }
+
+.car-light-left { left: 10px; }
+
+.car-light-right { right: 10px; }
+
+.car-wheel { width: 40px; height: 40px; background: #333; border-radius: 50%; position: absolute; bottom: -20px; border: 5px solid #666; animation: spin 1s linear infinite; }
+
+.wheel-front { right: 20px; }
+
+.wheel-back { left: 20px; }
+
+@keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+
+.car-spoiler { width: 60px; height: 20px; background: linear-gradient(135deg, #ff00ff, #00ffff); position: absolute; top: -15px; right: 10px; border-radius: 5px; }
 
 /* Transformation Animation */ .transforming { animation: transform 2s ease-in-out; }
 
@@ -173,7 +185,7 @@ body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-
 
 .robot-container {
     right: 5%;
-    transform: translateY(-50%) scale(0.7);
+    transform: scale(0.7);
 }
 
 .transform-btn {
