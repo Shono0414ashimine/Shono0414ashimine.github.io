@@ -8,57 +8,70 @@
             <div class="cube cube-3"></div>
         </div>
         
-        <!-- 3D Robot -->
-        <div class="robot-container">
-            <div class="robot" id="transformRobot">
-                <!-- Robot Head -->
-                <div class="robot-head">
-                    <div class="eye eye-left"></div>
-                    <div class="eye eye-right"></div>
-                    <div class="antenna"></div>
+        <!-- Humanoid Robot (Sharper / More Realistic) -->
+        <div class="robot-container" title="Click robot to toggle flight" aria-label="Animated robot">
+            <div class="robot robot--floating robot--punch" id="transformRobot" role="img" aria-hidden="false">
+                <div class="robot-head" id="robotHead" data-head-tilt="center">
+                    <div class="visor">
+                        <div class="eye eye-left" aria-hidden="true"></div>
+                        <div style="font-size:11px;opacity:.75">SHN</div>
+                        <div class="eye eye-right" aria-hidden="true"></div>
+                    </div>
+                    <div class="antenna" aria-hidden="true"></div>
                 </div>
-                
-                <!-- Robot Body -->
+
+                <div class="neck" aria-hidden="true"></div>
+
                 <div class="robot-body">
-                    <div class="chest-light"></div>
+                    <div class="shoulder-row" aria-hidden="true">
+                        <div class="arm arm-left">
+                            <div class="upper-arm"></div>
+                            <div class="elbow"></div>
+                            <div class="lower-arm">
+                                <div class="wrist"></div>
+                            </div>
+                            <div class="glove glove-left" aria-hidden="true">👊</div>
+                        </div>
+
+                        <div class="arm arm-right">
+                            <div class="upper-arm"></div>
+                            <div class="elbow"></div>
+                            <div class="lower-arm">
+                                <div class="wrist"></div>
+                            </div>
+                            <div class="glove glove-right" aria-hidden="true">👊</div>
+                        </div>
+                    </div>
+
+                    <div class="chest-panel">Premium Support AI</div>
                 </div>
-                
-                <!-- Robot Arms -->
-                <div class="robot-arm arm-left">
-                    <div class="upper-arm"></div>
-                    <div class="lower-arm"></div>
-                    <div class="hand"></div>
+
+                <div class="leg-row" aria-hidden="true">
+                    <div class="leg leg-left">
+                        <div class="thigh"></div>
+                        <div class="knee"></div>
+                        <div class="shin"></div>
+                        <div class="foot">
+                            <div class="thruster">
+                                <div class="flame"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="leg leg-right">
+                        <div class="thigh"></div>
+                        <div class="knee"></div>
+                        <div class="shin"></div>
+                        <div class="foot">
+                            <div class="thruster">
+                                <div class="flame"></div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="robot-arm arm-right">
-                    <div class="upper-arm"></div>
-                    <div class="lower-arm"></div>
-                    <div class="hand"></div>
-                </div>
-                
-                <!-- Robot Legs -->
-                <div class="robot-leg leg-left">
-                    <div class="upper-leg"></div>
-                    <div class="lower-leg"></div>
-                </div>
-                <div class="robot-leg leg-right">
-                    <div class="upper-leg"></div>
-                    <div class="lower-leg"></div>
-                </div>
-            </div>
-            
-            <!-- Race Car (Transformed State) -->
-            <div class="race-car" id="raceCar" style="display: none;">
-                <div class="car-body">
-                    <div class="car-window"></div>
-                    <div class="car-light car-light-left"></div>
-                    <div class="car-light car-light-right"></div>
-                </div>
-                <div class="car-wheel wheel-front"></div>
-                <div class="car-wheel wheel-back"></div>
-                <div class="car-spoiler"></div>
             </div>
         </div>
-        
+
         <button class="transform-btn" id="transformBtn">Transform!</button>
         
         <h1 class="hero-title">Shono Ashimine</h1>
@@ -138,8 +151,13 @@
             <p class="contact-text">Let's connect and discuss how I can help with your customer support needs.</p>
             <div class="contact-links">
                 <a href="mailto:your.email@example.com" class="contact-link">📧 Email</a>
-                <a href="https://github.com/shono0414ashimine" class="contact-link" target="_blank">💻 GitHub</a>
-                <a href="https://www.linkedin.com/in/shono-ashimine-200a711b3/" class="contact-link" target="_blank">💼 LinkedIn</a>
+                <a href="https://github.com/shono0414ashimine" class="contact-link" target="_blank" rel="noopener">💻 GitHub</a>
+                <a href="https://www.linkedin.com/in/shono-ashimine-200a711b3/" class="contact-link" target="_blank" rel="noopener" aria-label="LinkedIn">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true">
+                        <path d="M19 0H5C2.24 0 0 2.24 0 5v14c0 2.76 2.24 5 5 5h14c2.76 0 5-2.24 5-5V5c0-2.76-2.24-5-5-5zM7.5 20h-3v-10h3v10zM6 8.7c-.96 0-1.75-.79-1.75-1.75S5.04 5.2 6 5.2s1.75.79 1.75 1.75S6.96 8.7 6 8.7zM20 20h-3v-5.3c0-1.26-.03-2.88-1.76-2.88-1.76 0-2.03 1.37-2.03 2.78V20h-3v-10h2.88v1.37h.04c.4-.76 1.38-1.56 2.84-1.56 3.04 0 3.6 2 3.6 4.6V20z"/>
+                    </svg>
+                    LinkedIn
+                </a>
             </div>
         </div>
     </div>
