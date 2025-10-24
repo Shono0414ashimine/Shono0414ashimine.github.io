@@ -1,44 +1,154 @@
-<!DOCTYPE html> <html lang="en"> <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>Shono Ashimine - Profile</title> <link rel="stylesheet" href="styles.css"> </head> <body> <!-- Flying Robot Character --> <div class="robot-container"> <div class="robot"> <div class="robot-head"> <div class="robot-eye left"></div> <div class="robot-eye right"></div> <div class="robot-antenna"></div> </div> <div class="robot-body"> <div class="robot-chest"></div> </div> <div class="robot-arm left"> <div class="boxing-glove left-glove">🥊</div> </div> <div class="robot-arm right"> <div class="boxing-glove right-glove">🥊</div> </div> </div> </div>
-<div class="container">
-    <header class="profile-header">
-        <div class="neon-border">
-            <h1 class="neon-text">Shono Ashimine</h1>
+<!DOCTYPE html> <html lang="en"> <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>Shono Ashimine | Premium Customer Support Specialist</title> <link rel="stylesheet" href="styles.css"> </head> <body> <!-- Navigation --> <nav class="navbar"> <div class="nav-container"> <div class="logo">Shono Ashimine</div> <ul class="nav-menu"> <li><a href="#home">Home</a></li> <li><a href="#about">About</a></li> <li><a href="#skills">Skills</a></li> <li><a href="#projects">Projects</a></li> <li><a href="#contact">Contact</a></li> </ul> </div> </nav>
+<!-- Hero Section -->
+<section id="home" class="hero">
+    <div class="hero-content">
+        <div class="geometric-bg">
+            <div class="cube cube-1"></div>
+            <div class="cube cube-2"></div>
+            <div class="cube cube-3"></div>
         </div>
-        <p class="subtitle">Welcome to my profile</p>
-    </header>
-
-    <section class="about-section">
-        <div class="card">
-            <h2 class="section-title">About Me</h2>
-            <p id="bio">Add your bio here. Tell visitors about yourself, your interests, and what you do.</p>
-        </div>
-    </section>
-
-    <section class="skills-section">
-        <div class="card">
-            <h2 class="section-title">Skills</h2>
-            <div class="skills-grid">
-                <div class="skill-item">Skill 1</div>
-                <div class="skill-item">Skill 2</div>
-                <div class="skill-item">Skill 3</div>
-                <div class="skill-item">Skill 4</div>
+        
+        <!-- 3D Robot -->
+        <div class="robot-container">
+            <div class="robot" id="transformRobot">
+                <!-- Robot Head -->
+                <div class="robot-head">
+                    <div class="eye eye-left"></div>
+                    <div class="eye eye-right"></div>
+                    <div class="antenna"></div>
+                </div>
+                
+                <!-- Robot Body -->
+                <div class="robot-body">
+                    <div class="chest-light"></div>
+                </div>
+                
+                <!-- Robot Arms -->
+                <div class="robot-arm arm-left">
+                    <div class="upper-arm"></div>
+                    <div class="lower-arm"></div>
+                    <div class="hand"></div>
+                </div>
+                <div class="robot-arm arm-right">
+                    <div class="upper-arm"></div>
+                    <div class="lower-arm"></div>
+                    <div class="hand"></div>
+                </div>
+                
+                <!-- Robot Legs -->
+                <div class="robot-leg leg-left">
+                    <div class="upper-leg"></div>
+                    <div class="lower-leg"></div>
+                </div>
+                <div class="robot-leg leg-right">
+                    <div class="upper-leg"></div>
+                    <div class="lower-leg"></div>
+                </div>
+            </div>
+            
+            <!-- Race Car (Transformed State) -->
+            <div class="race-car" id="raceCar" style="display: none;">
+                <div class="car-body">
+                    <div class="car-window"></div>
+                    <div class="car-light car-light-left"></div>
+                    <div class="car-light car-light-right"></div>
+                </div>
+                <div class="car-wheel wheel-front"></div>
+                <div class="car-wheel wheel-back"></div>
+                <div class="car-spoiler"></div>
             </div>
         </div>
-    </section>
+        
+        <button class="transform-btn" id="transformBtn">Transform!</button>
+        
+        <h1 class="hero-title">Shono Ashimine</h1>
+        <p class="hero-subtitle">Premium Customer Support Specialist</p>
+        <p class="hero-description">Delivering exceptional customer experiences through innovative support solutions</p>
+        <a href="#contact" class="cta-button">Get In Touch</a>
+    </div>
+</section>
 
-    <section class="contact-section">
-        <div class="card">
-            <h2 class="section-title">Contact</h2>
+<!-- About Section -->
+<section id="about" class="about">
+    <div class="container">
+        <h2 class="section-title">About Me</h2>
+        <div class="about-content">
+            <p class="about-text">
+                [Add your bio here - Write about your background, experience, and what drives you as a Premium Customer Support Specialist. Highlight your passion for helping customers and solving complex problems.]
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- Skills Section -->
+<section id="skills" class="skills">
+    <div class="container">
+        <h2 class="section-title">Skills & Expertise</h2>
+        <div class="skills-grid">
+            <div class="skill-card">
+                <div class="skill-icon">💬</div>
+                <h3>Customer Service</h3>
+                <p>Expert in delivering exceptional customer experiences</p>
+            </div>
+            <div class="skill-card">
+                <div class="skill-icon">🔧</div>
+                <h3>Technical Support</h3>
+                <p>Proficient in troubleshooting and problem resolution</p>
+            </div>
+            <div class="skill-card">
+                <div class="skill-icon">📊</div>
+                <h3>CRM Systems</h3>
+                <p>Experienced with customer relationship management tools</p>
+            </div>
+            <div class="skill-card">
+                <div class="skill-icon">🌐</div>
+                <h3>Communication</h3>
+                <p>Multilingual support and clear communication</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Projects Section -->
+<section id="projects" class="projects">
+    <div class="container">
+        <h2 class="section-title">Projects & Achievements</h2>
+        <div class="projects-grid">
+            <div class="project-card">
+                <h3>Project Title 1</h3>
+                <p>[Describe a notable project or achievement here]</p>
+            </div>
+            <div class="project-card">
+                <h3>Project Title 2</h3>
+                <p>[Describe another project or achievement here]</p>
+            </div>
+            <div class="project-card">
+                <h3>Project Title 3</h3>
+                <p>[Describe another project or achievement here]</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Contact Section -->
+<section id="contact" class="contact">
+    <div class="container">
+        <h2 class="section-title">Get In Touch</h2>
+        <div class="contact-content">
+            <p class="contact-text">Let's connect and discuss how I can help with your customer support needs.</p>
             <div class="contact-links">
-                <a href="#" class="neon-button" data-url-type="email" data-url="" aria-label="Email">Email</a>
-                <a href="#" class="neon-button" data-url-type="linkedin" data-url="" aria-label="LinkedIn">LinkedIn</a>
-                <a href="#" class="neon-button" data-url-type="github" data-url="" aria-label="GitHub">GitHub</a>
+                <a href="mailto:your.email@example.com" class="contact-link">📧 Email</a>
+                <a href="https://github.com/shono0414ashimine" class="contact-link" target="_blank">💻 GitHub</a>
+                <a href="https://www.linkedin.com/in/shono-ashimine-200a711b3/" class="contact-link" target="_blank">💼 LinkedIn</a>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <footer>
-        <p>&copy; 2025 Shono Ashimine. All rights reserved.</p>
-    </footer>
-</div>
+<!-- Footer -->
+<footer class="footer">
+    <p>&copy; 2025 Shono Ashimine. All rights reserved.</p>
+</footer>
+
+<script src="script.js"></script>
 </body> </html>
