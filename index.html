@@ -8,70 +8,57 @@
             <div class="cube cube-3"></div>
         </div>
         
-        <!-- Humanoid Robot (Sharper / More Realistic) -->
-        <div class="robot-container" title="Click robot to toggle flight" aria-label="Animated robot">
-            <div class="robot robot--floating robot--punch" id="transformRobot" role="img" aria-hidden="false">
-                <div class="robot-head" id="robotHead" data-head-tilt="center">
-                    <div class="visor">
-                        <div class="eye eye-left" aria-hidden="true"></div>
-                        <div style="font-size:11px;opacity:.75">SHN</div>
-                        <div class="eye eye-right" aria-hidden="true"></div>
-                    </div>
-                    <div class="antenna" aria-hidden="true"></div>
+        <!-- 3D Robot -->
+        <div class="robot-container">
+            <div class="robot" id="transformRobot">
+                <!-- Robot Head -->
+                <div class="robot-head">
+                    <div class="eye eye-left"></div>
+                    <div class="eye eye-right"></div>
+                    <div class="antenna"></div>
                 </div>
-
-                <div class="neck" aria-hidden="true"></div>
-
+                
+                <!-- Robot Body -->
                 <div class="robot-body">
-                    <div class="shoulder-row" aria-hidden="true">
-                        <div class="arm arm-left">
-                            <div class="upper-arm"></div>
-                            <div class="elbow"></div>
-                            <div class="lower-arm">
-                                <div class="wrist"></div>
-                            </div>
-                            <div class="glove glove-left" aria-hidden="true">👊</div>
-                        </div>
-
-                        <div class="arm arm-right">
-                            <div class="upper-arm"></div>
-                            <div class="elbow"></div>
-                            <div class="lower-arm">
-                                <div class="wrist"></div>
-                            </div>
-                            <div class="glove glove-right" aria-hidden="true">👊</div>
-                        </div>
-                    </div>
-
-                    <div class="chest-panel">Premium Support AI</div>
+                    <div class="chest-light"></div>
                 </div>
-
-                <div class="leg-row" aria-hidden="true">
-                    <div class="leg leg-left">
-                        <div class="thigh"></div>
-                        <div class="knee"></div>
-                        <div class="shin"></div>
-                        <div class="foot">
-                            <div class="thruster">
-                                <div class="flame"></div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="leg leg-right">
-                        <div class="thigh"></div>
-                        <div class="knee"></div>
-                        <div class="shin"></div>
-                        <div class="foot">
-                            <div class="thruster">
-                                <div class="flame"></div>
-                            </div>
-                        </div>
-                    </div>
+                
+                <!-- Robot Arms -->
+                <div class="robot-arm arm-left">
+                    <div class="upper-arm"></div>
+                    <div class="lower-arm"></div>
+                    <div class="hand"></div>
+                </div>
+                <div class="robot-arm arm-right">
+                    <div class="upper-arm"></div>
+                    <div class="lower-arm"></div>
+                    <div class="hand"></div>
+                </div>
+                
+                <!-- Robot Legs -->
+                <div class="robot-leg leg-left">
+                    <div class="upper-leg"></div>
+                    <div class="lower-leg"></div>
+                </div>
+                <div class="robot-leg leg-right">
+                    <div class="upper-leg"></div>
+                    <div class="lower-leg"></div>
                 </div>
             </div>
+            
+            <!-- Race Car (Transformed State) -->
+            <div class="race-car" id="raceCar" style="display: none;">
+                <div class="car-body">
+                    <div class="car-window"></div>
+                    <div class="car-light car-light-left"></div>
+                    <div class="car-light car-light-right"></div>
+                </div>
+                <div class="car-wheel wheel-front"></div>
+                <div class="car-wheel wheel-back"></div>
+                <div class="car-spoiler"></div>
+            </div>
         </div>
-
+        
         <button class="transform-btn" id="transformBtn">Transform!</button>
         
         <h1 class="hero-title">Shono Ashimine</h1>
