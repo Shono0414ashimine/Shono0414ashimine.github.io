@@ -16,23 +16,7 @@ cubes.forEach((cube, index) => {
 });
 });
 
-// Add typing effect to hero title (optional) const heroTitle = document.querySelector('.hero-title'); if (heroTitle) { const text = heroTitle.textContent; heroTitle.textContent = ''; let i = 0;
-
-function typeWriter() {
-    if (i < text.length) {
-        heroTitle.textContent += text.charAt(i);
-        i++;
-        setTimeout(typeWriter, 100);
-    }
-}
-
-// Start typing effect after page load
-window.addEventListener('load', () => {
-    setTimeout(typeWriter, 500);
-});
-}
-
-// === ROBOT INTERACTION CODE === // Ensure robot element exists const robotEl = document.getElementById('transformRobot'); const robotHead = document.getElementById('robotHead');
+// === ROBOT INTERACTION CODE === const robotEl = document.getElementById('transformRobot'); const robotHead = document.getElementById('robotHead');
 
 if (robotEl) { // toggle flying state by clicking the robot container robotEl.closest('.robot-container').addEventListener('click', (e) => { // ignore clicks when transforming to race car if (!robotEl.offsetParent) return; robotEl.classList.toggle('robot--flying'); });
 
@@ -87,3 +71,31 @@ window.addEventListener('scroll', () => {
 // === TRANSFORM BUTTON CODE === let isRobot = true; const transformBtn = document.getElementById('transformBtn'); const raceCar = document.getElementById('raceCar');
 
 if (transformBtn && robotEl && raceCar) { transformBtn.addEventListener('click', () => { if (isRobot) { robotEl.classList.add('transforming'); // stabilize animations before transform robotEl.classList.remove('robot--flying'); robotEl.classList.remove('robot--punch');
+
+        setTimeout(() => {
+            robotEl.style.display = 'none';
+            raceCar.style.display = 'block';
+            raceCar.classList.add('transforming');
+            transformBtn.textContent = 'Transform Back!';
+            isRobot = false;
+
+            setTimeout(() => {
+                raceCar.classList.remove('transforming');
+            }, 2000);
+        }, 800);
+    } else {
+        raceCar.classList.add('transforming');
+        setTimeout(() => {
+            raceCar.style.display = 'none';
+            robotEl.style.display = 'grid';
+            robotEl.classList.add('transforming');
+            transformBtn.textContent = 'Transform!';
+            isRobot = true;
+
+            setTimeout(() => {
+                robotEl.classList.remove('transforming');
+            }, 2000);
+        }, 800);
+    }
+});
+}
