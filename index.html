@@ -1,4 +1,15 @@
-<!DOCTYPE html> <html lang="en"> <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>Shono Ashimine - Premium Customer Support</title> <style> * { margin: 0; padding: 0; box-sizing: border-box; }
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Shono Ashimine - Premium Customer Support</title>
+  <meta name="description" content="Shono Ashimine — Premium Customer Support specialist. Trilingual (English, Japanese, Tagalog) delivering exceptional customer experiences across tech, travel and AI." />
+  <meta property="og:title" content="Shono Ashimine — Premium Customer Support" />
+  <meta property="og:description" content="Trilingual customer support specialist with experience in tech, travel, and AI." />
+  <meta property="og:type" content="website" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         line-height: 1.6;
@@ -108,15 +119,9 @@
     }
 
     @keyframes pulse {
-        0% {
-            transform: scale(1);
-        }
-        50% {
-            transform: scale(1.05);
-        }
-        100% {
-            transform: scale(1);
-        }
+        0% { transform: scale(1); }
+        50% { transform: scale(1.05); }
+        100% { transform: scale(1); }
     }
 
     .name {
@@ -124,16 +129,7 @@
         font-weight: 700;
         color: #333;
         margin-bottom: 10px;
-        animation: typeWriter 2s steps(20) 0.5s both;
-    }
-
-    @keyframes typeWriter {
-        from {
-            width: 0;
-        }
-        to {
-            width: 100%;
-        }
+        /* keep visual effect but avoid layout jump by staying inline-block with overflow-hidden if needed */
     }
 
     .title {
@@ -144,14 +140,8 @@
     }
 
     @keyframes fadeInUp {
-        from {
-            opacity: 0;
-            transform: translateY(30px);
-        }
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
+        from { opacity: 0; transform: translateY(30px); }
+        to { opacity: 1; transform: translateY(0); }
     }
 
     /* Sections */
@@ -171,29 +161,14 @@
     }
 
     @keyframes slideInLeft {
-        from {
-            opacity: 0;
-            transform: translateX(-50px);
-        }
-        to {
-            opacity: 1;
-            transform: translateX(0);
-        }
+        from { opacity: 0; transform: translateX(-50px); }
+        to { opacity: 1; transform: translateX(0); }
     }
 
-    .section:nth-child(even) {
-        animation: slideInRight 1s ease-out;
-    }
-
+    .section:nth-child(even) { animation: slideInRight 1s ease-out; }
     @keyframes slideInRight {
-        from {
-            opacity: 0;
-            transform: translateX(50px);
-        }
-        to {
-            opacity: 1;
-            transform: translateX(0);
-        }
+        from { opacity: 0; transform: translateX(50px); }
+        to { opacity: 1; transform: translateX(0); }
     }
 
     .section h2 {
@@ -215,11 +190,7 @@
         animation: expandWidth 2s ease-out 1.5s both;
     }
 
-    @keyframes expandWidth {
-        to {
-            width: 100%;
-        }
-    }
+    @keyframes expandWidth { to { width: 100%; } }
 
     .bio {
         font-size: 1.2em;
@@ -246,26 +217,13 @@
         transition: transform 0.3s ease;
     }
 
-    .skill-item:hover {
-        transform: scale(1.05) rotate(2deg);
-    }
+    .skill-item:hover { transform: scale(1.05) rotate(2deg); }
 
     @keyframes bounceIn {
-        0% {
-            opacity: 0;
-            transform: scale(0.3);
-        }
-        50% {
-            opacity: 1;
-            transform: scale(1.05);
-        }
-        70% {
-            transform: scale(0.9);
-        }
-        100% {
-            opacity: 1;
-            transform: scale(1);
-        }
+        0% { opacity: 0; transform: scale(0.3); }
+        50% { opacity: 1; transform: scale(1.05); }
+        70% { transform: scale(0.9); }
+        100% { opacity: 1; transform: scale(1); }
     }
 
     /* LinkedIn Button */
@@ -288,26 +246,21 @@
         box-shadow: 0 10px 20px rgba(0, 119, 181, 0.3);
     }
 
+    .linkedin-btn:focus-visible {
+        outline: 3px solid rgba(0,119,181,0.6);
+        outline-offset: 4px;
+    }
+
     @keyframes glow {
-        from {
-            box-shadow: 0 0 20px rgba(0, 119, 181, 0.5);
-        }
-        to {
-            box-shadow: 0 0 30px rgba(0, 119, 181, 0.8);
-        }
+        from { box-shadow: 0 0 20px rgba(0, 119, 181, 0.5); }
+        to { box-shadow: 0 0 30px rgba(0, 119, 181, 0.8); }
     }
 
     /* Responsive */
     @media (max-width: 768px) {
-        .name {
-            font-size: 2em;
-        }
-        .section {
-            padding: 20px;
-        }
-        .skills-grid {
-            grid-template-columns: 1fr;
-        }
+        .name { font-size: 2em; }
+        .section { padding: 20px; }
+        .skills-grid { grid-template-columns: 1fr; }
     }
 
     /* DeepL API Integration Placeholder */
@@ -320,71 +273,106 @@
         margin-top: 30px;
     }
 
-    .api-section h3 {
-        color: #0077b5;
-        margin-bottom: 15px;
+    .api-section h3 { color: #0077b5; margin-bottom: 15px; }
+
+    /* Respect users who prefer reduced motion */
+    @media (prefers-reduced-motion: reduce) {
+      .shape, .header, .section, .profile-photo, .linkedin-btn, .skill-item {
+        animation: none !important;
+        transition: none !important;
+      }
     }
-</style>
-</head> <body> <div class="floating-shapes"> <div class="shape"></div> <div class="shape"></div> <div class="shape"></div> </div>
-<div class="container">
+  </style>
+</head>
+<body>
+  <!-- decorative shapes are marked aria-hidden -->
+  <div class="floating-shapes" aria-hidden="true">
+    <div class="shape"></div>
+    <div class="shape"></div>
+    <div class="shape"></div>
+  </div>
+
+  <div class="container" role="main">
     <header class="header">
-        <div class="profile-photo">SA</div>
-        <h1 class="name">Shono Ashimine</h1>
-        <p class="title">Premium Customer Support</p>
-        <a href="#" class="linkedin-btn">🔗 Connect on LinkedIn</a>
+      <!-- profile photo is decorative for now; include aria-label so screen readers get useful info -->
+      <div class="profile-photo" role="img" aria-label="Profile initials S A">SA</div>
+
+      <h1 class="name">Shono Ashimine</h1>
+      <p class="title">Premium Customer Support</p>
+      <!-- LinkedIn: set to your profile, open in new tab with noopener for security -->
+      <a
+        href="https://www.linkedin.com/in/shono-ashimine-200a711b3/"
+        class="linkedin-btn"
+        target="_blank"
+        rel="noopener"
+      >
+        🔗 Connect on LinkedIn
+      </a>
     </header>
 
-    <section class="section">
-        <h2>About Me</h2>
-        <p class="bio">
-            Former kickboxer turned Premium Customer Support specialist at DeepL. With 3+ years across tech, travel, and AI industries, I leverage trilingual skills (English, Japanese, Tagalog) to deliver exceptional customer experiences and bridge cultural gaps in global markets.
-        </p>
+    <section class="section" aria-labelledby="about-heading">
+      <h2 id="about-heading">About Me</h2>
+      <p class="bio">
+        Former kickboxer turned Premium Customer Support specialist at DeepL. With 3+ years across tech, travel, and AI industries, I leverage trilingual skills (English, Japanese, Tagalog) to deliver exceptional customer experiences and bridge cultural gaps in global markets.
+      </p>
     </section>
 
-    <section class="section">
-        <h2>Skills & Languages</h2>
-        <div class="skills-grid">
-            <div class="skill-item">🇺🇸 English</div>
-            <div class="skill-item">🇯🇵 Japanese</div>
-            <div class="skill-item">🇵🇭 Tagalog</div>
-            <div class="skill-item">💬 Customer Support</div>
-            <div class="skill-item">🌐 Cross-Cultural Communication</div>
-            <div class="skill-item">🥊 Former Kickboxer</div>
-        </div>
+    <section class="section" aria-labelledby="skills-heading">
+      <h2 id="skills-heading">Skills & Languages</h2>
+      <div class="skills-grid">
+        <div class="skill-item" role="listitem">🇺🇸 English</div>
+        <div class="skill-item" role="listitem">🇯🇵 Japanese</div>
+        <div class="skill-item" role="listitem">🇵🇭 Tagalog</div>
+        <div class="skill-item" role="listitem">💬 Customer Support</div>
+        <div class="skill-item" role="listitem">🌐 Cross-Cultural Communication</div>
+        <div class="skill-item" role="listitem">🥊 Former Kickboxer</div>
+      </div>
     </section>
 
-    <div class="api-section">
-        <h3>🚀 DeepL API Integration Ready</h3>
-        <p>This section is prepared for DeepL API integration to add dynamic translation features and enhanced functionality to make your website even cooler!</p>
+    <div class="api-section" aria-hidden="false">
+      <h3>🚀 DeepL API Integration Ready</h3>
+      <p>This section is prepared for DeepL API integration to add dynamic translation features and enhanced functionality to make your website even cooler!</p>
     </div>
-</div>
+  </div>
 
-<script>
-    // Smooth scrolling
+  <script>
+    // Safer smooth scrolling for same-page anchors.
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-            document.querySelector(this.getAttribute('href')).scrollIntoView({
-                behavior: 'smooth'
-            });
-        });
+      anchor.addEventListener('click', function (e) {
+        const href = this.getAttribute('href');
+        // ignore empty anchors used as placeholders
+        if (!href || href === '#') return;
+        const target = document.querySelector(href);
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
     });
 
-    // Add more floating shapes dynamically
+    // Add more floating shapes dynamically (limited amount)
     function createFloatingShape() {
-        const shape = document.createElement('div');
-        shape.className = 'shape';
-        shape.style.width = Math.random() * 50 + 30 + 'px';
-        shape.style.height = shape.style.width;
-        shape.style.left = Math.random() * 100 + '%';
-        shape.style.top = Math.random() * 100 + '%';
-        shape.style.animationDelay = Math.random() * 6 + 's';
-        document.querySelector('.floating-shapes').appendChild(shape);
+      const container = document.querySelector('.floating-shapes');
+      if (!container) return;
+      const shape = document.createElement('div');
+      shape.className = 'shape';
+      const size = Math.floor(Math.random() * 50) + 30;
+      shape.style.width = size + 'px';
+      shape.style.height = size + 'px';
+      shape.style.left = Math.floor(Math.random() * 100) + '%';
+      shape.style.top = Math.floor(Math.random() * 100) + '%';
+      shape.style.animationDelay = (Math.random() * 6) + 's';
+      container.appendChild(shape);
+      // remove after some time to avoid DOM growth
+      setTimeout(() => { if (shape.parentNode) shape.parentNode.removeChild(shape); }, 20000);
     }
 
-    // Create additional floating shapes
-    for (let i = 0; i < 5; i++) {
-        setTimeout(createFloatingShape, i * 1000);
+    // Create a few additional shapes on larger screens only
+    if (window.innerWidth > 600) {
+      for (let i = 0; i < 5; i++) {
+        setTimeout(createFloatingShape, i * 700);
+      }
     }
-</script>
-</body> </html>
+  </script>
+</body>
+</html>
