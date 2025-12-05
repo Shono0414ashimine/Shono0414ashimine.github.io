@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Hand-Controlled Particle System</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands/hands.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js"></script>
+
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            background-color: #000;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        #canvas-container {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            z-index: 1;
+        }
+        /* Hide the raw webcam feed, we only want the data */
+        #video-input { display: none; }
+
+        /* UI Panel Styling */
+        #ui-panel {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            z-index: 10;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            padding: 20px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            color: #fff;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            width: 220px;
+        }
+        .control-group { margin-bottom: 15px; }
+        label { display: block; margin-bottom: 5px; font-weight: 500; font-size: 14px;}
+        select, input[type=color] {
+            width: 100%;
+            padding: 8px;
+            border-radius: 6px;
+            border: none;
+            outline: none;
+            font-family: inherit;
+            cursor: pointer;
+        }
+        select { background: rgba(0,0,0,0.5); color: #fff; }
+        input[type=color] { height: 40px; padding: 2px; background: transparent;}
+        
+        #loading {
+            position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+            color: white; font-size: 24px; z-index: 20; pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="loading">Loading AI Models...</div>
+
+    <div id="ui-panel">
+        <div class="control-group">
+            <label for="template-select">Template Style</label>
+            <select id="template-select">
+                <option value="0">Saturn Rings</option>
+                <option value="1">Floating Hearts</option>
+                <option value="2">Flowers</option>
+                <option value="3">Fireworks</option>
+            </select>
+        </div>
+        <div class="control-group">
+            <label for="color-picker">Base Color</label>
+            <input type="color" id="color-picker" value="#00ffff">
+        </div>
+        <p style="font-size: 12px; opacity: 0.7; margin-top: 20px;">
+            Current Interaction:<br>
+            - <b>Pinch</b> fingers to scale down.<br>
+            - <b>Spread</b> hands apart to expand area.
+        </p>
+    </div>
+
+    <video id="video-input"></video>
+    <div id="canvas-container"></div>
+
+<script>
+    // --- Configuration ---
+    const PARTICLE_COUNT = 8000;
+    let isSystemReady = false;
+
+    // --- Global State ---
+    let scene, camera, renderer, particleSystem, uniforms;
+    let handGestureData = {
+        pinch: 0.0, // 0.0 (pinched) to 1.0 (open)
+        spread: 0.5 // 0.0 (hands together) to 1.0 (hands far apart)
+    };
+
+    // Texture Data URIs for shapes (simple white shapes on transparent bg)
+    const heartTex = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAABmJLR0QA/wD/AP+gvaeTAAAB9klEQVRoge2ZzU4CMRCFz8UIEoxGjUYT9Qn0ybu+gQ/iE7jSxcSNvv0TuDAaF0Yk3ExZaRvAP2inddKbtNMzbT76ZtqBwrIsy7Is61/I5FMAk6rW83oAmAHIBg69BjAIHNQEsFvVal4P0wDCAE77Dt0GMA2c4xQ4j+f08/mP/l63u06r1bZut0O93iCVSuHhYcy2bUwmE0ynU8xmM0SjUSQSCRiGAbB/36mEaYCvqh95PVQA1Ot1tNtt+L4PAGi32+j1ekgmk/A8Ly6Ay/sONQJQKBSQz+fhuq6pXdc1gZTLZeTzeSgAF+ccugsgCqBarZqg9lWlUgGgB3Df10E9AMXjceRyOdi2vVfbtmHbNnK5HOLxuAnA2d1BbQCZTAaFQiG0oEKhgEwmYwL47OyglgAymQxyuVxoQbZtI5PJmABc9h768L5TA0AqlaIkqFqtkqIoTdOE7/um9/F4HD/A399G7QCGw6HpxH6/b2rf7/dNZw6HQ9P7ZDKJH2A+n8d3YDAYxHaQtN9+v28C8DwPZ+H8g6YdIEmS8Xgc20GdTgdJkowfgD5A3w4QjUYxGo1iO2g0GiEajZoA/lX106q1/j0wDAOpVIr+C8gJ8A6g4fVQAeCa8N/Xf/z9P086APqB86h/C74A+Abw6vW4sCzLsiyr7P4AAX1p1YdSHvUAAAAASUVORK5CYII=';
+    const flowerTex = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAABmJLR0QA/wD/AP+gvaeTAAACeElEQVRoge2XzU4aQRTHf7tLFwttE2svNqYn06Snb4BP4GP0CXwT6bX
